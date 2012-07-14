@@ -1,1 +1,14 @@
 This whole project is under the MIT liscense.
+
+This is a RTI ramp calculator, punch in the wheelbase and the distance traveled,
+it will give you the RTI score and how far the wheel is above the ground.
+
+Since I'm a IH guy and I made this for the RTI ramp at the Binder Bee,
+www.ihsto.org, there are 3 buttons on the right hand side that have the 
+wheelbases of the common/easy IH vehicles, scout 80/800/II, scout 
+terra/traveler, and Travelall.
+
+Pickups/others you can just type the value in the wheelbase text box.
+
+The height is based on a 30 degree ramp. As this is what we have, There will be
+an option in  the future to input a ramp angle and have it saved.
