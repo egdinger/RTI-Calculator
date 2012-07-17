@@ -11,6 +11,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <activity android:name="rti.calculator.OptionsPage" />
         <activity
             android:name=".RTI_calculator"
             android:label="@string/title_activity_rti_calculator" >

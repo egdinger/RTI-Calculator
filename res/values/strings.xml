@@ -15,5 +15,7 @@
     <string name="scout_wb">Scout</string>
     <string name="terra_wb">Terra</string>
     <string name="travelall_wb">Travelall</string>
+    <string name="option_angle">Ramp Angle</string>
+    <string name="save">Save</string>
 
 </resources>

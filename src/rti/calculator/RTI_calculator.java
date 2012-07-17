@@ -1,6 +1,7 @@
 package rti.calculator;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.FloatMath;
@@ -24,8 +25,6 @@ public class RTI_calculator extends Activity {
         wheelbase = (EditText) findViewById(R.id.editText1);
         distance = (EditText) findViewById(R.id.editText2);
         
-        //wheelbase.setOnClickListener();
-        
         //Preferences
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         this.angle = settings.getFloat("angle", (float)Math.toRadians(30));
@@ -41,6 +40,11 @@ public class RTI_calculator extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
     	//respond to menu item selection
+    	Toast.makeText(this, "Pushed a button",
+                Toast.LENGTH_LONG).show();
+    	//Intent i = new Intent(this, OptionsPage.class);
+    	Intent intent = new Intent(this, OptionsPage.class);
+    	startActivity(intent);
     	return true;
     }
     
@@ -94,10 +98,12 @@ public class RTI_calculator extends Activity {
     public void clearClickHandler(View view) {
     	switch(view.getId()) {
     	case R.id.editText1:
-    		wheelbase.setText("");
+    		//wheelbase.setText("");
+    		wheelbase.selectAll();
     		break;
     	case R.id.editText2:
-    		distance.setText("");
+    		//distance.setText("");
+    		distance.selectAll();
     		break;
     }
     }

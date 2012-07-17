@@ -13,7 +13,8 @@
         android:ems="10"
         android:hint="@string/wheelbase"
         android:inputType="numberDecimal"
-        android:onClick="clearClickHandler" >
+        android:onClick="clearClickHandler"
+        android:selectAllOnFocus="true" >
 
         <requestFocus />
     </EditText>
@@ -28,7 +29,8 @@
         android:ems="10"
         android:hint="@string/distance"
         android:inputType="numberDecimal"
-        android:onClick="clearClickHandler" />
+        android:onClick="clearClickHandler"
+        android:selectAllOnFocus="true" />
 
     <Button
         android:id="@+id/button1"
@@ -36,6 +38,7 @@
         android:layout_height="75dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/editText2"
+        android:focusable="true"
         android:onClick="CalcClickHandler"
         android:text="@string/calc" />
 
