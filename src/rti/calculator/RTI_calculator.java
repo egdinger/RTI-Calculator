@@ -15,6 +15,8 @@ import android.widget.Toast;
 public class RTI_calculator extends Activity {
 	private EditText wheelbase;
 	private EditText distance;
+	private EditText rti;
+	private EditText height;
 	public static final String PREFS_NAME = "RTI_Perfs";
 	private float angle;
 
@@ -24,11 +26,16 @@ public class RTI_calculator extends Activity {
         setContentView(R.layout.activity_rti_calculator);
         wheelbase = (EditText) findViewById(R.id.editText1);
         distance = (EditText) findViewById(R.id.editText2);
-        
-        //Preferences
+        rti = (EditText) findViewById(R.id.editText3);
+        height = (EditText) findViewById(R.id.editText4);
+    }
+    
+    @Override
+    public void onResume() {
+    	super.onResume();
+    	//Preferences
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         this.angle = settings.getFloat("angle", (float)Math.toRadians(30));
-        
     }
 
     @Override
@@ -40,9 +47,7 @@ public class RTI_calculator extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
     	//respond to menu item selection
-    	Toast.makeText(this, "Pushed a button",
-                Toast.LENGTH_LONG).show();
-    	//Intent i = new Intent(this, OptionsPage.class);
+    	//Launch the settings activity
     	Intent intent = new Intent(this, OptionsPage.class);
     	startActivity(intent);
     	return true;
@@ -51,6 +56,7 @@ public class RTI_calculator extends Activity {
     public void CalcClickHandler(View view) {
         switch (view.getId()) {
         case R.id.button1:
+        	//Check to make sure valid numbers have been entered
           if (wheelbase.getText().length() == 0 || distance.getText().length() == 0) {
             Toast.makeText(this, "Please enter a valid number",
                 Toast.LENGTH_LONG).show();
@@ -63,21 +69,22 @@ public class RTI_calculator extends Activity {
           float wheelbase_value = Float.parseFloat(wheelbase.getText().toString());
           float distance_value = Float.parseFloat(distance.getText().toString());
           
-          float rti = calc_rti(wheelbase_value, distance_value);
-          float artic = articulation_height(angle, distance_value);
+          float rti_val = calc_rti(wheelbase_value, distance_value);
+          float height_val = distance_to_height(angle, distance_value);
           
-          EditText rti_txt = (EditText) findViewById(R.id.editText3);
-          rti_txt.setText("RTI: " + String.valueOf(rti));
-          EditText artic_txt = (EditText) findViewById(R.id.editText4);
-          artic_txt.setText(String.valueOf(artic));
+          rti.setText("RTI: " + String.valueOf(rti_val));
+          height.setText(String.valueOf(height_val));
         }
     }
     
     public float calc_rti(float wb, float dis) {
+    	//Can find this formula many places, wikipedia also has a good article
+    	//http://en.wikipedia.org/wiki/Ramp_travel_index
     	return ((dis/wb)*1000);
     }
     
-    public float articulation_height(float angle, float distance) {
+    public float distance_to_height(float angle, float distance) {
+    	//This is a simple trig math
     	return (distance/FloatMath.sin((float) (Math.PI/2)))*FloatMath.sin(angle);
     }
     
