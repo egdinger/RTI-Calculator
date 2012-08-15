@@ -12,7 +12,8 @@
         android:clickable="true"
         android:ems="10"
         android:hint="@string/wheelbase"
-        android:inputType="numberDecimal"
+        android:inputType="phone"
+        android:digits="1234567890."
         android:onClick="clearClickHandler"
         android:selectAllOnFocus="true" >
 
@@ -28,7 +29,8 @@
         android:clickable="true"
         android:ems="10"
         android:hint="@string/distance"
-        android:inputType="numberDecimal"
+        android:inputType="phone"
+        android:digits="1234567890."
         android:onClick="clearClickHandler"
         android:selectAllOnFocus="true" />
 
